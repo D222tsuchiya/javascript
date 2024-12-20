@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カウントダウン</title>
+    <style>
+        #countdown {
+            font-size: 2rem;
+            text-align: center;
+            margin-top: 50px;
+            transition: color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown" style="color: black;">10</div>
+
+    <script>
+        let time = 10; // カウントダウン開始値
+        const countdownElement = document.getElementById("countdown");
+
+        const countdown = setInterval(() => {
+            time--; // 時間を1減らす
+            countdownElement.textContent = time; // 表示を更新
+
+            // 色を変更するロジック
+            if (time <= 3 && time > 0) {
+                countdownElement.style.color = "red"; // 残り3秒以下で赤色に変更
+            }
+
+            if (time <= 0) {
+                clearInterval(countdown); // タイマーを停止
+                countdownElement.textContent = "タイムアップ！"; // メッセージを表示
+                countdownElement.style.color = "green"; // メッセージの色を緑に変更
+            }
+        }, 1000); // 1秒ごとに実行
+    </script>
+</body>
+</html>
